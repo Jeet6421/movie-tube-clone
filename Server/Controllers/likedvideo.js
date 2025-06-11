@@ -1,8 +1,8 @@
-import likedvideo from "../Models/likevideo.js";
+import likevideo from "../Models/likevideo.js";
 
 export const likedvideocontroller = async(req, res)=>{
     const likedvideodata = req.body;
-    const likedvideosave = new likedvideo(likedvideodata)
+    const likedvideosave = new likevideo(likedvideodata)
     try {
         await likedvideosave.save();
         res.status(200).json("added to likedvideo")
@@ -14,7 +14,7 @@ export const likedvideocontroller = async(req, res)=>{
 
 export const getalllikedvideo = async(req, res)=>{
     try {
-        const files = await likedvideo.find()
+        const files = await likevideo.find()
         res.status(200).send(files)
     } catch (error) {
         res.status(400).json(error)

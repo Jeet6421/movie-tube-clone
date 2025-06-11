@@ -11,7 +11,7 @@ import Auth from '../../pages/Auth/Auth.jsx';
 import axios from 'axios';
 import { useGoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import  login  from '../../action/auth';
+import  {login } from '../../action/auth.js';
 import { setcurrentuser } from '../../action/currentuser';
 
 const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {

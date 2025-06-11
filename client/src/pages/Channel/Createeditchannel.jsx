@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import "./Createeditchannel.css"
 import {updatechaneldata} from "../../action/channeluser"
 import { useDispatch } from 'react-redux'
-import  login  from '../../action/auth';
+import  {login } from '../../action/auth.js';
 const Createeditchannel = ({seteditcreatechanelbtn}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.currentuserreducer);
