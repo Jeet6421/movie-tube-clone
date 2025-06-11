@@ -41,3 +41,32 @@ export const login = async (req, res) => {
     return res.status(500).json({ message: "Something went wrong..." });
   }
 };
+
+export const addPoints = async (req, res) => {
+  const { pointsToAdd } = req.body;
+  const userId = req.userid; // From auth middleware
+
+  if (!userId) {
+    return res.status(401).json({ message: "User not authenticated." });
+  }
+
+  if (typeof pointsToAdd !== 'number' || pointsToAdd <= 0) {
+    return res.status(400).json({ message: "Points to add must be a positive number." });
+  }
+
+  try {
+    const user = await users.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    user.points = (user.points || 0) + pointsToAdd; // Ensure user.points is not NaN if initially undefined
+    await user.save();
+
+    res.status(200).json({ message: "Points added successfully", points: user.points });
+  } catch (error) {
+    console.error("Error adding points:", error);
+    res.status(500).json({ message: "Something went wrong while adding points." });
+  }
+};

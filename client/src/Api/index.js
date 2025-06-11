@@ -37,3 +37,6 @@ export const deletelikedvideo = (videoid, viewer) => API.delete(`/video/deleteli
 export const addtowatchlater = (watchlaterdata) =>API.post('/video/watchlater', watchlaterdata)
 export const getallwatchlater = ()=> API.get('/video/getallwatchlater')
 export const deletewatchlater = (videoid,viewer)=> API.delete(`/video/deletewatchlater/${videoid}/${viewer}`)
+
+// Points
+export const addPoints = (pointsData) => API.post('/user/add-points', pointsData);

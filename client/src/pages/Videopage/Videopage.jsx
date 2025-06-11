@@ -7,6 +7,7 @@ import Comment from "../../Component/Comment/Comment";
 import { useSelector, useDispatch } from "react-redux";
 import { viewvideo } from "../../action/video";
 import { addtohistory } from "../../action/history";
+import { addPointsForVideoCompletion } from "../../action/auth"; // Import the new action
 
 const Videopage = () => {
     const { vid } = useParams();
@@ -38,7 +39,14 @@ const Videopage = () => {
             handlehistory();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [currentuser, handlehistory, handleviews]); // Added dependencies based on usage
+
+    const handleVideoEnded = () => {
+        if (currentuser?.result?._id && vv?._id) {
+            console.log(`Video ended: ${vv._id}, User: ${currentuser.result._id}. Dispatching add points action.`);
+            dispatch(addPointsForVideoCompletion(5)); // Dispatch the actual action with 5 points
+        }
+    };
 
     // Show loading screen while vv is undefined
     if (!vv) return <div className="loading">Loading video...</div>;
@@ -51,6 +59,7 @@ const Videopage = () => {
                         src={`https://movie-tube-clone.onrender.com/${vv?.filepath}`}
                         className="video_ShowVideo_videoPage"
                         controls
+                        onEnded={handleVideoEnded} // Added onEnded event handler
                     ></video>
                     <div className="video_details_videoPage">
                         <div className="video_btns_title_VideoPage_cont">
