@@ -28,14 +28,17 @@ const currentUser=useSelector(state => state.currentuserreducer);
       </div>
       {currentUser?.result._id === currentchannel?._id &&(
         <>
-        <p className="editbtn_chanel" onClick={()=>seteditcreatechanelbtn(true)}>
-          <FaEdit/>
-          <b>Edit Channel</b>
-        </p>
-        <p className="uploadbtn_chanel" onClick={()=>setvideouploadpage(true)}>
-          <FaUpload/>
-          <b>Upload Video</b>
-        </p>
+          <div className="user_points_chanel">
+            <p>Points: {currentUser?.result?.points || 0}</p>
+          </div>
+          <p className="editbtn_chanel" onClick={()=>seteditcreatechanelbtn(true)}>
+            <FaEdit/>
+            <b>Edit Channel</b>
+          </p>
+          <p className="uploadbtn_chanel" onClick={()=>setvideouploadpage(true)}>
+            <FaUpload/>
+            <b>Upload Video</b>
+          </p>
         </>
       )}
     </div>
