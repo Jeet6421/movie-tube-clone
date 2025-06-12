@@ -58,4 +58,4 @@ coverage/
 *.tsbuildinfo
 
 # Ignore all files in the public directory except for specific ones
-public
+# public
