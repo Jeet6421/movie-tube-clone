@@ -4,7 +4,7 @@ A full-featured YouTube-inspired movie streaming web app built using **MERN Stac
 
 ## 🚀 Live Demo
 
-🔗 [movie-tube-clone.netlify.app](https://movie-tube-clone.netlify.app/)
+🔗 [youtube-clone](https://movieclone1.netlify.app/)
 
 ---
 
